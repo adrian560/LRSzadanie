@@ -19,6 +19,8 @@ mavros_msgs/srv/set_mode.hpp
 -
 mavros_msgs/srv/command_tol.hpp
 -
+stdio.h
+-
 
 /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__builder.hpp
 builtin_interfaces/msg/detail/duration__struct.hpp

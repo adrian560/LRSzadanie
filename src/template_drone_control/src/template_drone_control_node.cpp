@@ -4,6 +4,7 @@
 #include <mavros_msgs/srv/command_bool.hpp>
 #include <mavros_msgs/srv/set_mode.hpp>
 #include <mavros_msgs/srv/command_tol.hpp>
+#include <stdio.h>
 
 using namespace std::chrono_literals;
 
@@ -63,10 +64,49 @@ private:
     mavros_msgs::msg::State current_state_;
 };
 
+
+void nacitatMapu()
+{
+    FILE *pArq;
+    pArq = fopen("/home/lrs-ubuntu/LRS/ros2_ws_group10/src/template_drone_control/maps/FEI_LRS_2D.pgm", "r");
+
+    char line1[2], line2[100], line3[10];
+
+    int cont = 1;
+    while(1){
+        if(cont ==1){ //version
+            fscanf(pArq, "%s", &line1);
+            if(feof(pArq)) break;
+
+            printf("%s", line1);
+        }
+
+        if(cont ==2){ //comment
+            fscanf(pArq, "%s", &line2);
+            if(feof(pArq)) break;
+
+            printf("%s", line2);
+        }
+
+        if(cont ==3){ //width, height
+            fscanf(pArq, "%s", &line3);
+            if(feof(pArq)) break;
+
+            printf("%s", line3);
+        }
+
+        cont++;
+    }
+    fclose(pArq);
+}
+
 int main(int argc, char **argv)
 {
+    nacitatMapu();
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<TemplateDroneControl>());
     rclcpp::shutdown();
     return 0;
 }
+
+
