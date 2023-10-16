@@ -54,3 +54,71 @@ def init():
 
 if __name__ == "__main__":
     init()
+////////////////////////////////todo
+void state_cb(const mavros_msgs::msg::State::SharedPtr msg)
+{
+    current_state_ = *msg;
+    if (current_state_.mode == "GUIDED")
+    {
+        // The drone is in GUIDED mode, handle the state change here
+    }
+}
+
+////////////////////////////arm
+// Arm the drone
+mavros_msgs::srv::CommandBool::Request arm_request;
+arm_request.value = true;
+
+if (arming_client_->wait_for_service(1s))
+{
+    auto result = arming_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandBool::Request>(arm_request));
+
+    if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) == rclcpp::executor::FutureReturnCode::SUCCESS)
+    {
+        if (result.get()->success)
+        {
+            RCLCPP_INFO(this->get_logger(), "Drone armed successfully");
+        }
+        else
+        {
+            RCLCPP_ERROR(this->get_logger(), "Failed to arm the drone");
+        }
+    }
+    else
+    {
+        RCLCPP_ERROR(this->get_logger(), "Service call to arm the drone failed");
+    }
+}
+else
+{
+    RCLCPP_ERROR(this->get_logger(), "Service call to arm the drone timed out");
+}
+
+// Take off
+mavros_msgs::srv::CommandTOL::Request takeoff_request;
+takeoff_request.altitude = 3.0; // Adjust the altitude as needed
+
+if (takeoff_client_->wait_for_service(1s))
+{
+    auto result = takeoff_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandTOL::Request>(takeoff_request));
+
+    if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) == rclcpp::executor::FutureReturnCode::SUCCESS)
+    {
+        if (result.get()->success)
+        {
+            RCLCPP_INFO(this->get_logger(), "Drone took off successfully");
+        }
+        else
+        {
+            RCLCPP_ERROR(this->get_logger(), "Failed to take off the drone");
+        }
+    }
+    else
+    {
+        RCLCPP_ERROR(this->get_logger(), "Service call to take off the drone failed");
+    }
+}
+else
+{
+    RCLCPP_ERROR(this->get_logger(), "Service call to take off the drone timed out");
+}
