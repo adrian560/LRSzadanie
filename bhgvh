@@ -1,0 +1,28 @@
+def shorten_path(path):
+    point_previous = path[0]
+    sur1 = 0
+    sur2 = 0
+    index = 0
+    index2 = 0
+
+    for point_curent in path:
+        if index == 0
+            path_short[index2] = point_curent
+            index2 += 1
+
+        elif index == 1
+
+        elif (point_curent[0][0] - point_previous[0][0]) == sur1 && (point_curent[0][1] - point_previous[0][1]) == sur2
+
+        elif (point_curent[0][0] - point_previous[0][0]) != sur1 || (point_curent[0][1] - point_previous[0][1]) != sur2
+            path_short[index2] = point_previous
+            index2 += 1
+
+        if index > 0
+            sur1 = point_curent[0][0] - point_previous[0][0]
+            sur2 = point_curent[0][1] - point_previous[0][1]
+
+        point_previous = point_curent
+        index += 1
+
+    return path_short
