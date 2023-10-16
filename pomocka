@@ -1,0 +1,56 @@
+def replace_values_in_array(pixel_data):
+    height = len(pixel_data)
+    width = len(pixel_data[0])
+
+    # Create a new grid with the added border
+    new_height = height + 4
+    new_width = width + 4
+    new_grid = [['.' for _ in range(new_width)] for _ in range(new_height)]
+
+    # Copy the original data to the center of the new grid
+    for i in range(height):
+        for j in range(width):
+            new_grid[i + 2][j + 2] = pixel_data[i][j]
+
+    # Update the grid to add the +2 size border around obstacles
+    for i in range(2, new_height - 2):
+        for j in range(2, new_width - 2):
+            if new_grid[i][j] == '#':
+                for dx in [-2, -1, 0, 1, 2]:
+                    for dy in [-2, -1, 0, 1, 2]:
+                        new_i, new_j = i + dx, j + dy
+                        if new_i >= 0 and new_i < new_height and new_j >= 0 and new_j < new_width:
+                            new_grid[new_i][new_j] = '#'
+
+    return new_grid
+/////////////////////pouzitie
+
+def init():
+    with open("map_080.pgm", "rb") as file:
+        byte_data = file.read()
+        data = byte_data.decode("utf-8")
+
+    metadata, pixel_data = parse_pgm(data)
+
+    # Add a +2 size border around walls
+    pixel_data = replace_values_in_array(pixel_data)
+
+    # Convert the map to numeric values
+    filtered_data_pgm = convert_to_numeric(pixel_data)
+    write_pgm(filtered_data_pgm, 'map.pgm')
+
+    start_pos = (250, 300)
+    directions = scan_grid(filtered_data, start_pos)
+
+    path1 = find_path(start_pos, (50, 35), directions)
+
+    grid_with_path1 = draw_path(path1, copy.deepcopy(filtered_data))
+
+    grid_with_path1_converted = convert_to_numeric(grid_with_path1)
+
+    print(path1)
+
+    write_pgm(grid_with_path1_converted, 'path_output.pgm')
+
+if __name__ == "__main__":
+    init()
