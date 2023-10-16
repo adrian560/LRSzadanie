@@ -26,3 +26,24 @@ def shorten_path(path):
         index += 1
 
     return path_short
+
+
+
+
+if index == 0:
+    path_short[index2] = point_curent
+    index2 += 1
+elif index > 0:
+    sur1 = point_curent[0][0] - point_previous[0][0]
+    sur2 = point_curent[0][1] - point_previous[0][1]
+else:
+    # Handle the case when index is not 0 or 1
+
+if (point_curent[0][0] - point_previous[0][0]) == sur1 and (point_curent[0][1] - point_previous[0][1]) == sur2:
+    # Handle the condition where both sur1 and sur2 match
+elif (point_curent[0][0] - point_previous[0][0]) != sur1 or (point_curent[0][1] - point_previous[0][1]) != sur2:
+    path_short[index2] = point_previous
+    index2 += 1
+
+point_previous = point_curent
+index += 1
