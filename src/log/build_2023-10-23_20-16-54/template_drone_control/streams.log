@@ -1,0 +1,28 @@
+[0.043s] Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control -- -j8 -l8
+[0.190s] [35m[1mScanning dependencies of target template_drone_control_node[0m
+[0.238s] make[2]: Warning: File '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp' has modification time 8015 s in the future
+[0.276s] [ 50%] [32mBuilding CXX object CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o[0m
+[0.345s] [100%] [32m[1mLinking CXX executable template_drone_control_node[0m
+[1.619s] make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+[1.667s] [100%] Built target template_drone_control_node
+[1.704s] Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control -- -j8 -l8
+[1.809s] Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control
+[1.832s] -- Install configuration: ""
+[1.832s] -- Installing: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/lib/template_drone_control/template_drone_control_node
+[1.845s] -- Set runtime path of "/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/lib/template_drone_control/template_drone_control_node" to ""
+[1.846s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/ament_index/resource_index/package_run_dependencies/template_drone_control
+[1.846s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/ament_index/resource_index/parent_prefix_path/template_drone_control
+[1.847s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/environment/ament_prefix_path.sh
+[1.847s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/environment/ament_prefix_path.dsv
+[1.848s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/environment/path.sh
+[1.848s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/environment/path.dsv
+[1.848s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/local_setup.bash
+[1.848s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/local_setup.sh
+[1.848s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/local_setup.zsh
+[1.848s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/local_setup.dsv
+[1.848s] -- Installing: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.dsv
+[1.848s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/ament_index/resource_index/packages/template_drone_control
+[1.849s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/cmake/template_drone_controlConfig.cmake
+[1.849s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/cmake/template_drone_controlConfig-version.cmake
+[1.849s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.xml
+[1.852s] Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control

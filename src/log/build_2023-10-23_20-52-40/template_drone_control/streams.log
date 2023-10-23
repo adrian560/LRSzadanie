@@ -1,0 +1,17 @@
+[0.047s] Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control -- -j8 -l8
+[0.172s] [35m[1mScanning dependencies of target template_drone_control_node[0m
+[0.265s] [ 50%] [32mBuilding CXX object CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o[0m
+[14.390s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::local_pos_cb(geometry_msgs::msg::PoseStamped_<std::allocator<void> >::SharedPtr)’:
+[14.390s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:87:43: error: expected ‘;’ before ‘current_local_pos_’
+[14.391s]    87 |         current_local_pos_.pose.position.x
+[14.391s]       |                                           ^
+[14.391s]       |                                           ;
+[14.391s]    88 |         current_local_pos_.pose.position.y
+[14.391s]       |         ~~~~~~~~~~~~~~~~~~                 
+[14.392s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:87:42: warning: statement has no effect [-Wunused-value]
+[14.392s]    87 |         current_local_pos_.pose.position.x
+[14.392s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[14.404s] make[2]: *** [CMakeFiles/template_drone_control_node.dir/build.make:63: CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o] Error 1
+[14.405s] make[1]: *** [CMakeFiles/Makefile2:105: CMakeFiles/template_drone_control_node.dir/all] Error 2
+[14.406s] make: *** [Makefile:141: all] Error 2
+[14.414s] Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control -- -j8 -l8

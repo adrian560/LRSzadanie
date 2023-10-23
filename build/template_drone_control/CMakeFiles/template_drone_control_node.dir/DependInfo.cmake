@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/lrs-ubuntu/LRS/ros2_ws_group10/src/template_drone_control/src/template_drone_control_node.cpp" "/home/lrs-ubuntu/LRS/ros2_ws_group10/build/template_drone_control/CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o"
+  "/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp" "/home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control/CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

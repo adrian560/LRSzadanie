@@ -1,0 +1,128 @@
+[1.547s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[1.547s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f55ccfdb5e0>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=8, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f55ccfdb5e0>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f55ccfdbb20>)
+[1.774s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.775s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.776s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.776s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.776s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.777s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.777s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src'
+[1.777s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.778s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.778s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.778s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.778s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.778s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.778s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.778s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.778s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.891s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.892s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.892s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.892s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.892s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.893s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.893s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.893s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.894s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.894s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.894s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.895s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.895s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.895s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.895s] Level 1:colcon.colcon_core.package_identification:_identify(template_drone_control) by extensions ['ignore', 'ignore_ament_install']
+[1.895s] Level 1:colcon.colcon_core.package_identification:_identify(template_drone_control) by extension 'ignore'
+[1.895s] Level 1:colcon.colcon_core.package_identification:_identify(template_drone_control) by extension 'ignore_ament_install'
+[1.895s] Level 1:colcon.colcon_core.package_identification:_identify(template_drone_control) by extensions ['colcon_pkg']
+[1.896s] Level 1:colcon.colcon_core.package_identification:_identify(template_drone_control) by extension 'colcon_pkg'
+[1.896s] Level 1:colcon.colcon_core.package_identification:_identify(template_drone_control) by extensions ['colcon_meta']
+[1.896s] Level 1:colcon.colcon_core.package_identification:_identify(template_drone_control) by extension 'colcon_meta'
+[1.896s] Level 1:colcon.colcon_core.package_identification:_identify(template_drone_control) by extensions ['ros']
+[1.896s] Level 1:colcon.colcon_core.package_identification:_identify(template_drone_control) by extension 'ros'
+[1.917s] DEBUG:colcon.colcon_core.package_identification:Package 'template_drone_control' with type 'ros.ament_cmake' and name 'template_drone_control'
+[1.917s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.917s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.917s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.917s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.917s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[2.084s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[2.085s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[2.118s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 174 installed packages in /opt/ros/foxy
+[2.134s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[2.498s] Level 5:colcon.colcon_core.verb:set package 'template_drone_control' build argument 'cmake_args' from command line to 'None'
+[2.498s] Level 5:colcon.colcon_core.verb:set package 'template_drone_control' build argument 'cmake_target' from command line to 'None'
+[2.498s] Level 5:colcon.colcon_core.verb:set package 'template_drone_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.498s] Level 5:colcon.colcon_core.verb:set package 'template_drone_control' build argument 'cmake_clean_cache' from command line to 'False'
+[2.498s] Level 5:colcon.colcon_core.verb:set package 'template_drone_control' build argument 'cmake_clean_first' from command line to 'False'
+[2.498s] Level 5:colcon.colcon_core.verb:set package 'template_drone_control' build argument 'cmake_force_configure' from command line to 'False'
+[2.499s] Level 5:colcon.colcon_core.verb:set package 'template_drone_control' build argument 'ament_cmake_args' from command line to 'None'
+[2.499s] Level 5:colcon.colcon_core.verb:set package 'template_drone_control' build argument 'catkin_cmake_args' from command line to 'None'
+[2.499s] Level 5:colcon.colcon_core.verb:set package 'template_drone_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.499s] DEBUG:colcon.colcon_core.verb:Building package 'template_drone_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control', 'merge_install': False, 'path': '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control', 'symlink_install': False, 'test_result_base': None}
+[2.500s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[2.516s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[2.516s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control' with build type 'ament_cmake'
+[2.516s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control'
+[2.554s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[2.555s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.556s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.580s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control -DCMAKE_INSTALL_PREFIX=/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control
+[10.820s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control -DCMAKE_INSTALL_PREFIX=/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control
+[10.836s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control -- -j8 -l8
+[13.798s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control -- -j8 -l8
+[13.909s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control
+[13.953s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(template_drone_control)
+[13.954s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/build/template_drone_control
+[14.012s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control' for CMake module files
+[14.013s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control' for CMake config files
+[14.013s] Level 1:colcon.colcon_core.shell:create_environment_hook('template_drone_control', 'cmake_prefix_path')
+[14.022s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/hook/cmake_prefix_path.ps1'
+[14.062s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/hook/cmake_prefix_path.dsv'
+[14.103s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/hook/cmake_prefix_path.sh'
+[14.111s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/lib'
+[14.112s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/bin'
+[14.112s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/lib/pkgconfig/template_drone_control.pc'
+[14.113s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/lib/python3.8/site-packages'
+[14.115s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/bin'
+[14.118s] INFO:colcon.colcon_core.shell:Creating package script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.ps1'
+[14.155s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.dsv'
+[14.159s] INFO:colcon.colcon_core.shell:Creating package script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.sh'
+[14.171s] INFO:colcon.colcon_core.shell:Creating package script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.bash'
+[14.212s] INFO:colcon.colcon_core.shell:Creating package script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.zsh'
+[14.253s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/colcon-core/packages/template_drone_control)
+[14.351s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(template_drone_control)
+[14.356s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control' for CMake module files
+[14.357s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control' for CMake config files
+[14.358s] Level 1:colcon.colcon_core.shell:create_environment_hook('template_drone_control', 'cmake_prefix_path')
+[14.367s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/hook/cmake_prefix_path.ps1'
+[14.368s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/hook/cmake_prefix_path.dsv'
+[14.401s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/hook/cmake_prefix_path.sh'
+[14.404s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/lib'
+[14.405s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/bin'
+[14.405s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/lib/pkgconfig/template_drone_control.pc'
+[14.406s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/lib/python3.8/site-packages'
+[14.406s] Level 1:colcon.colcon_core.environment:checking '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/bin'
+[14.409s] INFO:colcon.colcon_core.shell:Creating package script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.ps1'
+[14.412s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.dsv'
+[14.454s] INFO:colcon.colcon_core.shell:Creating package script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.sh'
+[14.457s] INFO:colcon.colcon_core.shell:Creating package script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.bash'
+[14.462s] INFO:colcon.colcon_core.shell:Creating package script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/template_drone_control/package.zsh'
+[14.464s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/template_drone_control/share/colcon-core/packages/template_drone_control)
+[14.466s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[14.469s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[14.470s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[14.470s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[14.496s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[14.497s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[14.497s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[14.554s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[14.555s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/local_setup.ps1'
+[14.586s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/_local_setup_util_ps1.py'
+[14.591s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/setup.ps1'
+[14.594s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/local_setup.sh'
+[14.597s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/_local_setup_util_sh.py'
+[14.600s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/setup.sh'
+[14.701s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/local_setup.bash'
+[14.702s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/setup.bash'
+[14.707s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/local_setup.zsh'
+[14.710s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/install/setup.zsh'

@@ -1,0 +1,27 @@
+Setmode GUIDED
+
+check ci je guiodnuty
+
+
+arming ARMED
+check ci je armnuty
+
+
+potom ho treba  TAKE OFF -> pozri commands 
+
+Check ci sa takeofool do pozicie kam malist
+
+mavros_msgs::std::PositonXYZ  premenna
+
+premenna.yaw = 0.5 
+premenna.longitude = 0.2
+
+publisher_(premennna)
+
+
+potom kontrola ci si v pozicii kam si chcel items
+
+
+
+ a potom letiet na body
+ 

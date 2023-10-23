@@ -1,0 +1,19 @@
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In function ‘void nacitatMapu()’:
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:93:28: warning: format ‘%s’ expects argument of type ‘char*’, but argument 3 has type ‘char (*)[2]’ [-Wformat=]
+   93 |             fscanf(pArq, "%s", &line1);
+      |                           ~^   ~~~~~~
+      |                            |   |
+      |                            |   char (*)[2]
+      |                            char*
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:100:28: warning: format ‘%s’ expects argument of type ‘char*’, but argument 3 has type ‘char (*)[100]’ [-Wformat=]
+  100 |             fscanf(pArq, "%s", &line2);
+      |                           ~^   ~~~~~~
+      |                            |   |
+      |                            |   char (*)[100]
+      |                            char*
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:107:28: warning: format ‘%s’ expects argument of type ‘char*’, but argument 3 has type ‘char (*)[10]’ [-Wformat=]
+  107 |             fscanf(pArq, "%s", &line3);
+      |                           ~^   ~~~~~~
+      |                            |   |
+      |                            |   char (*)[10]
+      |                            char*
