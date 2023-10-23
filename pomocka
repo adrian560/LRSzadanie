@@ -1,214 +1,179 @@
-def replace_values_in_array(pixel_data):
-    height = len(pixel_data)
-    width = len(pixel_data[0])
+#include <rclcpp/rclcpp.hpp>
+#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <mavros_msgs/msg/state.hpp>
+#include <mavros_msgs/srv/command_bool.hpp>
+#include <mavros_msgs/srv/set_mode.hpp>
+#include <mavros_msgs/srv/command_tol.hpp>
+#include <stdio.h>
 
-    # Create a new grid with the added border
-    new_height = height + 4
-    new_width = width + 4
-    new_grid = [['.' for _ in range(new_width)] for _ in range(new_height)]
+using namespace std::chrono_literals;
 
-    # Copy the original data to the center of the new grid
-    for i in range(height):
-        for j in range(width):
-            new_grid[i + 2][j + 2] = pixel_data[i][j]
-
-    # Update the grid to add the +2 size border around obstacles
-    for i in range(2, new_height - 2):
-        for j in range(2, new_width - 2):
-            if new_grid[i][j] == '#':
-                for dx in [-2, -1, 0, 1, 2]:
-                    for dy in [-2, -1, 0, 1, 2]:
-                        new_i, new_j = i + dx, j + dy
-                        if new_i >= 0 and new_i < new_height and new_j >= 0 and new_j < new_width:
-                            new_grid[new_i][new_j] = '#'
-
-    return new_grid
-/////////////////////pouzitie
-
-def init():
-    with open("map_080.pgm", "rb") as file:
-        byte_data = file.read()
-        data = byte_data.decode("utf-8")
-
-    metadata, pixel_data = parse_pgm(data)
-
-    # Add a +2 size border around walls
-    pixel_data = replace_values_in_array(pixel_data)
-
-    # Convert the map to numeric values
-    filtered_data_pgm = convert_to_numeric(pixel_data)
-    write_pgm(filtered_data_pgm, 'map.pgm')
-
-    start_pos = (250, 300)
-    directions = scan_grid(filtered_data, start_pos)
-
-    path1 = find_path(start_pos, (50, 35), directions)
-
-    grid_with_path1 = draw_path(path1, copy.deepcopy(filtered_data))
-
-    grid_with_path1_converted = convert_to_numeric(grid_with_path1)
-
-    print(path1)
-
-    write_pgm(grid_with_path1_converted, 'path_output.pgm')
-
-if __name__ == "__main__":
-    init()
-////////////////////////////////todo
-void state_cb(const mavros_msgs::msg::State::SharedPtr msg)
+class TemplateDroneControl : public rclcpp::Node
 {
-    current_state_ = *msg;
-    if (current_state_.mode == "GUIDED")
+public:
+    TemplateDroneControl() : Node("template_drone_control_node")
     {
-        // The drone is in GUIDED mode, handle the state change here
-    }
-}
+        // Set up ROS publishers, subscribers and service clients
+        state_sub_ = this->create_subscription<mavros_msgs::msg::State>(
+            "mavros/state", 10, std::bind(&TemplateDroneControl::state_cb, this, std::placeholders::_1));
+        local_pos_pub_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("mavros/setpoint_position/local", 10);
+        arming_client_ = this->create_client<mavros_msgs::srv::CommandBool>("mavros/cmd/arming");
+        set_mode_client_ = this->create_client<mavros_msgs::srv::SetMode>("mavros/set_mode");
+        takeoff_client_ = this->create_client<mavros_msgs::srv::CommandTOL>("mavros/cmd/takeoff");
 
-////////////////////////////arm
-// Arm the drone
-mavros_msgs::srv::CommandBool::Request arm_request;
-arm_request.value = true;
 
-if (arming_client_->wait_for_service(1s))
-{
-    auto result = arming_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandBool::Request>(arm_request));
+/////////////////
+        rmw_qos_profile_t custom_qos = rmw_qos_profile_default;
+        custom_qos.depth = 1;
+        custom_qos.reliability = RMW_QOS_POLICY_RELIABILITY_BEST_EFFORT;
+        auto qos = rclcpp::QoS(rclcpp::QoSInitialization(custom_qos.history, 1), custom_qos);
+        local_pos_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
+                "/mavros/local_position/pose", qos, std::bind(&TemplateDroneControl::local_pos_cb, this, std::placeholders::_1));
 
-    if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) == rclcpp::executor::FutureReturnCode::SUCCESS)
-    {
-        if (result.get()->success)
+        //geometry_msgs::msg::PoseStamped setpoint_to_send;
+        //setpoint_to_send.pose.position.x = 1;
+        //local_pos_pub_.publish(current_local_pos_);
+
+//////////////////
+
+
+        // Wait for MAVROS SITL connection
+        while (rclcpp::ok() && !current_state_.connected)
         {
-            RCLCPP_INFO(this->get_logger(), "Drone armed successfully");
+            rclcpp::spin_some(this->get_node_base_interface());
+            std::this_thread::sleep_for(100ms);
         }
-        else
+        mavros_msgs::srv::SetMode::Request guided_set_mode_req;
+        guided_set_mode_req.custom_mode = "GUIDED";
+
+
+        // mavros_msg::srv:CommandBool mavrosArmingMode;
+        // mavrosArmingMode.mode = True;
+ 
+        while (!set_mode_client_->wait_for_service(1s))
         {
-            RCLCPP_ERROR(this->get_logger(), "Failed to arm the drone");
+            if (!rclcpp::ok())
+            {
+                RCLCPP_ERROR(this->get_logger(), "Interrupted while waiting for the set_mode service. Exiting.");
+                return;
+            }
+            RCLCPP_INFO(this->get_logger(), "Waiting for set_mode service...");
         }
-    }
-    else
-    {
-        RCLCPP_ERROR(this->get_logger(), "Service call to arm the drone failed");
-    }
-}
-else
-{
-    RCLCPP_ERROR(this->get_logger(), "Service call to arm the drone timed out");
-}
+        auto result = set_mode_client_->async_send_request(std::make_shared<mavros_msgs::srv::SetMode::Request>(guided_set_mode_req));
 
-// Take off
-mavros_msgs::srv::CommandTOL::Request takeoff_request;
-takeoff_request.altitude = 3.0; // Adjust the altitude as needed
-
-if (takeoff_client_->wait_for_service(1s))
-{
-    auto result = takeoff_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandTOL::Request>(takeoff_request));
-
-    if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) == rclcpp::executor::FutureReturnCode::SUCCESS)
-    {
-        if (result.get()->success)
+        // TODO: Test if drone state really changed to GUIDED
+        
+        if (current_state_.mode == "GUIDED")
         {
-            RCLCPP_INFO(this->get_logger(), "Drone took off successfully");
-        }
-        else
-        {
-            RCLCPP_ERROR(this->get_logger(), "Failed to take off the drone");
-        }
+            RCLCPP_INFO(this->get_logger(), "funguje");;
+        }       
+        
+        // TODO: Arm and Take Off\
+        // Arm the drone
+        mavros_msgs::srv::CommandBool::Request arm_request;
+        arm_request.value = true;
+        RCLCPP_INFO(this->get_logger(), "Drone armed successfully");
+
+        // Take off
+        mavros_msgs::srv::CommandTOL::Request takeoff_request;
+        takeoff_request.altitude = 3.0; // Adjust the altitude as needed
+        RCLCPP_INFO(this->get_logger(), "Drone took off successfully");
+
+        
+
+////////
+
+        
+        RCLCPP_INFO(this->get_logger(), "Sending position command");
+        // tuna budes pisat arming 
+        // auto resultArming = arming_-> async_send_request(std:make_thread<mavros_msg::srv::)
+
+        // TODO: Implement position controller and mission commands here
     }
-    else
+
+private:
+
+    void publish(const geometry_msgs::msg::PoseStamped setpoint_to_send)
     {
-        RCLCPP_ERROR(this->get_logger(), "Service call to take off the drone failed");
+
+        //setpoint_to_send.pose.position.x = 1;
+        //RCLCPP_INFO(this->get_logger(), "Current State: %s", current_state_.mode.c_str());
     }
-}
-else
-{
-    RCLCPP_ERROR(this->get_logger(), "Service call to take off the drone timed out");
-}
 
-
-/////////pixovinky
-In the provided C++ code for a ROS node named TemplateDroneControl, there are several "TODO" comments indicating tasks that need to be implemented. Here's how you can address each of these tasks:
-
-Test if drone state really changed to GUIDED:
-You can check if the drone state has changed to "GUIDED" by monitoring the state messages received from the "mavros/state" topic. In your state_cb callback function (which is likely defined elsewhere in your class), you can check the state and take action based on it. For example, you can add a check like this inside your state_cb function:
-
-cpp
-Copy code
-void state_cb(const mavros_msgs::msg::State::SharedPtr msg)
-{
-    current_state_ = *msg;
-    if (current_state_.mode == "GUIDED")
+    void state_cb(const mavros_msgs::msg::State::SharedPtr msg)
     {
-        // The drone is in GUIDED mode, handle the state change here
+        current_state_ = *msg;
+        RCLCPP_INFO(this->get_logger(), "Current State: %s", current_state_.mode.c_str());
     }
-}
-This code will respond when the drone changes to the "GUIDED" mode, and you can place your logic inside the condition to perform any actions you need when the drone enters GUIDED mode.
 
-Arm and Take Off:
-To arm and take off the drone, you can use the arming and takeoff service clients that you have already created. Here's how you can implement arming and takeoff:
 
-cpp
-Copy code
-// Arm the drone
-mavros_msgs::srv::CommandBool::Request arm_request;
-arm_request.value = true;
-
-if (arming_client_->wait_for_service(1s))
-{
-    auto result = arming_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandBool::Request>(arm_request));
-
-    if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) == rclcpp::executor::FutureReturnCode::SUCCESS)
+    void local_pos_cb(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
     {
-        if (result.get()->success)
-        {
-            RCLCPP_INFO(this->get_logger(), "Drone armed successfully");
+        geometry_msgs::msg::PoseStamped current_local_pos_ = *msg;
+
+        // To obtain the position of the drone use this data fields withing the message, please note, that this is the local position of the drone in the NED frame so it is different to the map frame
+        current_local_pos_.pose.position.x;
+        current_local_pos_.pose.position.y;
+        current_local_pos_.pose.position.z;
+        // you can do the same for orientation, but you will not need it for this seminar
+
+
+        RCLCPP_INFO(this->get_logger(), "Current Local Position: %f, %f, %f", current_local_pos_.pose.position.x, current_local_pos_.pose.position.y, current_local_pos_.pose.position.z);
+    }
+
+
+    rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr state_sub_;
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr local_pos_pub_;
+    rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr arming_client_;
+    rclcpp::Client<mavros_msgs::srv::SetMode>::SharedPtr set_mode_client_;
+    rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr takeoff_client_;
+
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr local_pos_sub_;
+
+    mavros_msgs::msg::State current_state_;
+};
+
+/*
+void nacitatMapu()
+{
+    FILE *pArq;
+    pArq = fopen("/home/lrs-ubuntu/LRS/ros2_ws_group10/src/template_drone_control/maps/FEI_LRS_2D.pgm", "r");
+
+    char line1[2], line2[100], line3[10];
+
+    int cont = 1;
+    while(1){
+        if(cont ==1){ //version
+            fscanf(pArq, "%s", &line1);
+            if(feof(pArq)) break;
+
+            printf("%s", line1);
         }
-        else
-        {
-            RCLCPP_ERROR(this->get_logger(), "Failed to arm the drone");
+
+        if(cont ==2){ //comment
+            fscanf(pArq, "%s", &line2);
+            if(feof(pArq)) break;
+
+            printf("%s", line2);
         }
-    }
-    else
-    {
-        RCLCPP_ERROR(this->get_logger(), "Service call to arm the drone failed");
-    }
-}
-else
-{
-    RCLCPP_ERROR(this->get_logger(), "Service call to arm the drone timed out");
-}
 
-// Take off
-mavros_msgs::srv::CommandTOL::Request takeoff_request;
-takeoff_request.altitude = 3.0; // Adjust the altitude as needed
+        if(cont ==3){ //width, height
+            fscanf(pArq, "%s", &line3);
+            if(feof(pArq)) break;
 
-if (takeoff_client_->wait_for_service(1s))
-{
-    auto result = takeoff_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandTOL::Request>(takeoff_request));
-
-    if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) == rclcpp::executor::FutureReturnCode::SUCCESS)
-    {
-        if (result.get()->success)
-        {
-            RCLCPP_INFO(this->get_logger(), "Drone took off successfully");
+            printf("%s", line3);
         }
-        else
-        {
-            RCLCPP_ERROR(this->get_logger(), "Failed to take off the drone");
-        }
+
+        cont++;
     }
-    else
-    {
-        RCLCPP_ERROR(this->get_logger(), "Service call to take off the drone failed");
-    }
+    fclose(pArq);
 }
-else
+*/
+int main(int argc, char **argv)
 {
-    RCLCPP_ERROR(this->get_logger(), "Service call to take off the drone timed out");
+    //nacitatMapu();
+    rclcpp::init(argc, argv);
+    rclcpp::spin(std::make_shared<TemplateDroneControl>());
+    rclcpp::shutdown();
+    return 0;
 }
-Make sure to adjust the altitude and other parameters as needed for your specific use case.
-
-Implement position controller and mission commands:
-The last "TODO" comment indicates where you should implement your position controller and mission commands. This is where you would define your desired flight path, waypoints, and control commands based on your specific application.
-
-You can implement your custom logic for controlling the drone's position and executing your mission commands in this section. You might use PID controllers, path planning algorithms, or other control strategies depending on your requirements.
-
-After completing these tasks, your TemplateDroneControl node should be able to set the mode to "GUIDED," arm the drone, and take off, and then execute your custom control logic and mission commands.
