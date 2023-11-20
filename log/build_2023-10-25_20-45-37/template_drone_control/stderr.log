@@ -1,0 +1,41 @@
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:71:9: warning: multi-line comment [-Wcomment]
+   71 |         // TODO: Arm and Take Off\
+      |         ^
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:57: error: ‘SetMavFrame’ in namespace ‘mavros_msgs::srv’ does not name a type
+   99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+      |                                                         ^~~~~~~~~~~
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:78: error: expected unqualified-id before ‘request’
+   99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+      |                                                                              ^~~~~~~
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:77: error: expected ‘)’ before ‘request’
+   99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+      |                                ~                                            ^~~~~~~~
+      |                                                                             )
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:70: error: expected ‘;’ at end of member declaration
+   99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+      |                                                                      ^~~~~~~
+      |                                                                             ;
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:78: error: ‘request’ does not name a type
+   99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+      |                                                                              ^~~~~~~
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In constructor ‘TemplateDroneControl::TemplateDroneControl()’:
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:84:27: error: ‘mavros_msgs::srv::SetMavFrame’ has not been declared
+   84 |         mavros_msgs::srv::SetMavFrame::Request request;
+      |                           ^~~~~~~~~~~
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::publish(geometry_msgs::msg::PoseStamped)’:
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:113:56: warning: unused parameter ‘setpoint_to_send’ [-Wunused-parameter]
+  113 |     void publish(const geometry_msgs::msg::PoseStamped setpoint_to_send)
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::local_pos_cb(geometry_msgs::msg::PoseStamped_<std::allocator<void> >::SharedPtr)’:
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:132:42: warning: statement has no effect [-Wunused-value]
+  132 |         current_local_pos_.pose.position.x;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:133:42: warning: statement has no effect [-Wunused-value]
+  133 |         current_local_pos_.pose.position.y;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:134:42: warning: statement has no effect [-Wunused-value]
+  134 |         current_local_pos_.pose.position.z;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+make[2]: *** [CMakeFiles/template_drone_control_node.dir/build.make:63: CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:105: CMakeFiles/template_drone_control_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

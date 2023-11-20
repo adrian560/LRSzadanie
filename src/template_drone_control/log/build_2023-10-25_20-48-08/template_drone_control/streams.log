@@ -1,0 +1,43 @@
+[0.066s] Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/build/template_drone_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/build/template_drone_control -- -j8 -l8
+[0.292s] [35m[1mScanning dependencies of target template_drone_control_node[0m
+[0.412s] [ 50%] [32mBuilding CXX object CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o[0m
+[0.458s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:71:9: warning: multi-line comment [-Wcomment]
+[0.458s]    71 |         // TODO: Arm and Take Off\
+[0.459s]       |         ^
+[0.461s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::publish(geometry_msgs::msg::PoseStamped)’:
+[0.464s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:113:56: warning: unused parameter ‘setpoint_to_send’ [-Wunused-parameter]
+[0.465s]   113 |     void publish(const geometry_msgs::msg::PoseStamped setpoint_to_send)
+[0.465s]       |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+[0.465s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::local_pos_cb(geometry_msgs::msg::PoseStamped_<std::allocator<void> >::SharedPtr)’:
+[0.465s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:132:42: warning: statement has no effect [-Wunused-value]
+[0.466s]   132 |         current_local_pos_.pose.position.x;
+[0.466s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[0.466s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:133:42: warning: statement has no effect [-Wunused-value]
+[0.466s]   133 |         current_local_pos_.pose.position.y;
+[0.466s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[0.466s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:134:42: warning: statement has no effect [-Wunused-value]
+[0.466s]   134 |         current_local_pos_.pose.position.z;
+[0.467s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[0.493s] [100%] [32m[1mLinking CXX executable template_drone_control_node[0m
+[2.626s] [100%] Built target template_drone_control_node
+[2.675s] Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/build/template_drone_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/build/template_drone_control -- -j8 -l8
+[2.811s] Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/build/template_drone_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/build/template_drone_control
+[2.839s] -- Install configuration: ""
+[2.841s] -- Installing: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/lib/template_drone_control/template_drone_control_node
+[2.854s] -- Set runtime path of "/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/lib/template_drone_control/template_drone_control_node" to ""
+[2.855s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/ament_index/resource_index/package_run_dependencies/template_drone_control
+[2.855s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/ament_index/resource_index/parent_prefix_path/template_drone_control
+[2.856s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/environment/ament_prefix_path.sh
+[2.857s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/environment/ament_prefix_path.dsv
+[2.858s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/environment/path.sh
+[2.858s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/environment/path.dsv
+[2.859s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/local_setup.bash
+[2.859s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/local_setup.sh
+[2.859s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/local_setup.zsh
+[2.859s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/local_setup.dsv
+[2.860s] -- Installing: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/package.dsv
+[2.861s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/ament_index/resource_index/packages/template_drone_control
+[2.861s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/cmake/template_drone_controlConfig.cmake
+[2.862s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/cmake/template_drone_controlConfig-version.cmake
+[2.862s] -- Up-to-date: /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/install/template_drone_control/share/template_drone_control/package.xml
+[2.865s] Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/build/template_drone_control' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/build/template_drone_control

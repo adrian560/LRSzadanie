@@ -21,6 +21,16 @@ mavros_msgs/srv/command_tol.hpp
 -
 stdio.h
 -
+unistd.h
+-
+iostream
+-
+vector
+-
+fstream
+-
+sstream
+-
 
 /opt/ros/foxy/include/builtin_interfaces/msg/detail/duration__builder.hpp
 builtin_interfaces/msg/detail/duration__struct.hpp

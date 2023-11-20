@@ -1,0 +1,45 @@
+[0.066s] Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control -- -j8 -l8
+[0.224s] [35m[1mScanning dependencies of target template_drone_control_node[0m
+[0.318s] [ 50%] [32mBuilding CXX object CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o[0m
+[15.262s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:71:9: warning: multi-line comment [-Wcomment]
+[15.262s]    71 |         // TODO: Arm and Take Off\
+[15.262s]       |         ^
+[15.263s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:57: error: ‘SetMavFrame’ in namespace ‘mavros_msgs::srv’ does not name a type
+[15.263s]    99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+[15.263s]       |                                                         ^~~~~~~~~~~
+[15.263s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:78: error: expected unqualified-id before ‘request’
+[15.263s]    99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+[15.264s]       |                                                                              ^~~~~~~
+[15.264s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:77: error: expected ‘)’ before ‘request’
+[15.264s]    99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+[15.264s]       |                                ~                                            ^~~~~~~~
+[15.264s]       |                                                                             )
+[15.264s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:70: error: expected ‘;’ at end of member declaration
+[15.264s]    99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+[15.264s]       |                                                                      ^~~~~~~
+[15.264s]       |                                                                             ;
+[15.265s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:99:78: error: ‘request’ does not name a type
+[15.265s]    99 |         void setDesiredPosition(const mavros_msgs::srv::SetMavFrame::Request request, double x, double y, double z)
+[15.265s]       |                                                                              ^~~~~~~
+[15.265s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In constructor ‘TemplateDroneControl::TemplateDroneControl()’:
+[15.265s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:84:27: error: ‘mavros_msgs::srv::SetMavFrame’ has not been declared
+[15.265s]    84 |         mavros_msgs::srv::SetMavFrame::Request request;
+[15.265s]       |                           ^~~~~~~~~~~
+[15.265s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::publish(geometry_msgs::msg::PoseStamped)’:
+[15.265s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:113:56: warning: unused parameter ‘setpoint_to_send’ [-Wunused-parameter]
+[15.266s]   113 |     void publish(const geometry_msgs::msg::PoseStamped setpoint_to_send)
+[15.266s]       |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+[15.266s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::local_pos_cb(geometry_msgs::msg::PoseStamped_<std::allocator<void> >::SharedPtr)’:
+[15.266s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:132:42: warning: statement has no effect [-Wunused-value]
+[15.266s]   132 |         current_local_pos_.pose.position.x;
+[15.266s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[15.266s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:133:42: warning: statement has no effect [-Wunused-value]
+[15.267s]   133 |         current_local_pos_.pose.position.y;
+[15.267s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[15.267s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:134:42: warning: statement has no effect [-Wunused-value]
+[15.269s]   134 |         current_local_pos_.pose.position.z;
+[15.271s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[15.273s] make[2]: *** [CMakeFiles/template_drone_control_node.dir/build.make:63: CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o] Error 1
+[15.274s] make[1]: *** [CMakeFiles/Makefile2:105: CMakeFiles/template_drone_control_node.dir/all] Error 2
+[15.274s] make: *** [Makefile:141: all] Error 2
+[15.276s] Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control' returned '2': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control -- -j8 -l8

@@ -5,13 +5,27 @@
 #include <mavros_msgs/srv/set_mode.hpp>
 #include <mavros_msgs/srv/command_tol.hpp>
 #include <stdio.h>
+#include <unistd.h> 
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <sstream>
+
+
+float global_current_x;
+float global_current_y;
+float global_current_z;
+
+float global_target_x;
+float global_target_y;
+float global_target_z;
 
 using namespace std::chrono_literals;
 
 class TemplateDroneControl : public rclcpp::Node
 {
 public:
-    TemplateDroneControl() : Node("template_drone_control_node")
+    TemplateDroneControl(const std::vector<std::vector<float>>& coordinates) : Node("template_drone_control_node"), coordinates_(coordinates)
     {
         // Set up ROS publishers, subscribers and service clients
         state_sub_ = this->create_subscription<mavros_msgs::msg::State>(
@@ -20,6 +34,9 @@ public:
         arming_client_ = this->create_client<mavros_msgs::srv::CommandBool>("mavros/cmd/arming");
         set_mode_client_ = this->create_client<mavros_msgs::srv::SetMode>("mavros/set_mode");
         takeoff_client_ = this->create_client<mavros_msgs::srv::CommandTOL>("mavros/cmd/takeoff");
+        publisher_ = this->create_publisher<geometry_msgs::msg::PoseStamped>("mavros_msgs/msg/PositionTarget", 10);
+        rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr land_client_;
+        land_client_ = this->create_client<mavros_msgs::srv::CommandTOL>("mavros/cmd/land");
 
 
 /////////////////
@@ -29,13 +46,6 @@ public:
         auto qos = rclcpp::QoS(rclcpp::QoSInitialization(custom_qos.history, 1), custom_qos);
         local_pos_sub_ = this->create_subscription<geometry_msgs::msg::PoseStamped>(
                 "/mavros/local_position/pose", qos, std::bind(&TemplateDroneControl::local_pos_cb, this, std::placeholders::_1));
-
-        //geometry_msgs::msg::PoseStamped setpoint_to_send;
-        //setpoint_to_send.pose.position.x = 1;
-        //local_pos_pub_.publish(current_local_pos_);
-
-//////////////////
-
 
         // Wait for MAVROS SITL connection
         while (rclcpp::ok() && !current_state_.connected)
@@ -47,8 +57,8 @@ public:
         guided_set_mode_req.custom_mode = "GUIDED";
 
 
-        // mavros_msg::srv:CommandBool mavrosArmingMode;
-        // mavrosArmingMode.mode = True;
+        geometry_msgs::msg::PoseStamped target_position_;
+        setNextTargetPosition();
  
         while (!set_mode_client_->wait_for_service(1s))
         {
@@ -60,36 +70,207 @@ public:
             RCLCPP_INFO(this->get_logger(), "Waiting for set_mode service...");
         }
         auto result = set_mode_client_->async_send_request(std::make_shared<mavros_msgs::srv::SetMode::Request>(guided_set_mode_req));
-
+        //sleep(2000);
         // TODO: Test if drone state really changed to GUIDED
         
         if (current_state_.mode == "GUIDED")
         {
             RCLCPP_INFO(this->get_logger(), "funguje");;
-        }       
+        }  
+
+             
         
         // TODO: Arm and Take Off\
-        // Arm the drone
-        mavros_msgs::srv::CommandBool::Request arm_request;
-        arm_request.value = true;
-        RCLCPP_INFO(this->get_logger(), "Drone armed successfully");
 
-        // Take off
-        mavros_msgs::srv::CommandTOL::Request takeoff_request;
-        takeoff_request.altitude = 3.0; // Adjust the altitude as needed
-        RCLCPP_INFO(this->get_logger(), "Drone took off successfully");
-
-////////
-
+        while (rclcpp::ok() && !current_state_.connected)
+        {
+            rclcpp::spin_some(this->get_node_base_interface());
+            std::this_thread::sleep_for(100ms);
+        }
         
         RCLCPP_INFO(this->get_logger(), "Sending position command");
         // tuna budes pisat arming 
         // auto resultArming = arming_-> async_send_request(std:make_thread<mavros_msg::srv::)
+          // Arm the drone
+        mavros_msgs::srv::CommandBool::Request arm_request;
+        arm_request.value = true;
 
-        // TODO: Implement position controller and mission commands here
+        if (arming_client_->wait_for_service(1s))
+        {
+            auto result = arming_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandBool::Request>(arm_request));
+
+            if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) == rclcpp::executor::FutureReturnCode::SUCCESS)
+            {
+                if (result.get()->success)
+                {
+                    RCLCPP_INFO(this->get_logger(), "Drone armed successfully");
+                }
+                else
+                {
+                    RCLCPP_ERROR(this->get_logger(), "Failed to arm the drone");
+                }
+            }
+            else
+            {
+                RCLCPP_ERROR(this->get_logger(), "Service call to arm the drone failed");
+            }
+        }
+        else
+        {
+            RCLCPP_ERROR(this->get_logger(), "Service call to arm the drone timed out");
+        }
+
+
+        // Take of
+        std::this_thread::sleep_for(10000ms);
+
+        mavros_msgs::srv::CommandTOL::Request takeoff_request;
+        
+        takeoff_request.altitude = 3.0; // tu doplnit prve z
+
+        if (takeoff_client_->wait_for_service(1s))
+        {
+            auto result = takeoff_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandTOL::Request>(takeoff_request));
+
+            if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) == rclcpp::executor::FutureReturnCode::SUCCESS)
+            {
+                if (result.get()->success)
+                {
+                    RCLCPP_INFO(this->get_logger(), "Drone took off successfully");
+                }
+                else
+                {
+                    RCLCPP_ERROR(this->get_logger(), "Failed to take off the drone");
+                }
+            }
+            else
+            {
+                RCLCPP_ERROR(this->get_logger(), "Service call to take off the drone failed");
+            }
+        }
+        else
+        {
+            RCLCPP_ERROR(this->get_logger(), "Service call to take off the drone timed out");
+        }
+
+        
+        std::this_thread::sleep_for(15000ms);
+        //tu dat pokial nebude v okruhu target pozicie tak ide dolny command
+        
+        std::thread(&TemplateDroneControl::positionControlLoop, this).detach();
+       
+        //RCLCPP_INFO(this->get_logger(), "Pred while vypis x - Current Local Position: %f, %f, %f %f", global_current_x, global_current_y, global_current_z, abs(target_position_.pose.position.x - current_local_pos_.pose.position.x));            
+        //RCLCPP_INFO(this->get_logger(), "target position: %f, %f, %f", global_target_x, global_target_y, global_target_z);            
+        int i = 1;
+        while(i < coordinates_.size())
+        {
+            //RCLCPP_INFO(this->get_logger(), "vnutryPred while vypis x - Current Local Position: %f, %f, %f %f", global_current_x, global_current_y, global_current_z, abs(global_current_x - global_current_x));            
+            //RCLCPP_INFO(this->get_logger(), "vnutrytarget position: %f, %f, %f", global_target_x, global_target_y, global_target_z); 
+            rclcpp::spin_some(this->get_node_base_interface());
+            if (abs(global_target_x - global_current_x)  < 0.09)
+            {
+                //RCLCPP_INFO(this->get_logger(), "Prvy layer x while - Current Local Position: %f, %f, %f %f", current_local_pos_.pose.position.x, current_local_pos_.pose.position.y, current_local_pos_.pose.position.z, abs(target_position_.pose.position.x - current_local_pos_.pose.position.x));            
+                if (abs(global_target_y - global_current_y)  < 0.09)
+                {
+                    //RCLCPP_INFO(this->get_logger(), "druhy layer y while - Current Local Position: %f, %f, %f %f", current_local_pos_.pose.position.x, current_local_pos_.pose.position.y, current_local_pos_.pose.position.z, abs(target_position_.pose.position.y - current_local_pos_.pose.position.y));            
+                    if (abs(global_target_z - global_current_z)  < 0.09)
+                    {
+                        //RCLCPP_INFO(this->get_logger(), "treti layer z while - Current Local Position: %f, %f, %f %f", current_local_pos_.pose.position.x, current_local_pos_.pose.position.y, current_local_pos_.pose.position.z, abs(target_position_.pose.position.z - current_local_pos_.pose.position.z));            
+                        geometry_msgs::msg::PoseStamped target_position_;
+                        setNextTargetPosition();
+                        //setTargetPosition(-10.0, -5.0, 2.0);
+                        std::thread(&TemplateDroneControl::positionControlLoop, this).detach();
+                        i++;
+
+                    }
+                }
+            }
+        }
+        std::thread(&TemplateDroneControl::positionControlLoop, this).detach();
+        std::this_thread::sleep_for(5000ms);        
+        mavros_msgs::srv::CommandTOL::Request land_request;
+    
+        if (land_client_->wait_for_service(1s)) {
+            auto result = land_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandTOL::Request>(land_request));
+
+            if (rclcpp::spin_until_future_complete(this->get_node_base_interface(), result) == rclcpp::executor::FutureReturnCode::SUCCESS) {
+                if (result.get()->success) {
+                    RCLCPP_INFO(this->get_logger(), "Drone landed successfully");
+                } else {
+                    RCLCPP_ERROR(this->get_logger(), "Failed to land the drone");
+                }
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "Service call to land the drone failed");
+            }
+        } else {
+            RCLCPP_ERROR(this->get_logger(), "Service call to land the drone timed out");
+        }
+
     }
 
 private:
+        geometry_msgs::msg::PoseStamped target_position_;
+        geometry_msgs::msg::PoseStamped current_local_pos_;
+
+        std::vector<std::vector<float>> coordinates_;
+        size_t current_target_index = 0;
+
+        void setTargetPosition(double x, double y, double z) {
+            target_position_.pose.position.x = x;
+            target_position_.pose.position.y = y;
+            target_position_.pose.position.z = z;
+            global_target_x =x;
+            global_target_y =y;
+            global_target_z =z;
+        }
+
+        void positionControlLoop() {
+            while (rclcpp::ok()) {
+                // Calculate position error
+                double error_x = target_position_.pose.position.x - current_local_pos_.pose.position.x;
+                double error_y = target_position_.pose.position.y - current_local_pos_.pose.position.y;
+                double error_z = target_position_.pose.position.z - current_local_pos_.pose.position.z;
+
+                // Proportional gains (adjust as needed)
+                double Kp_x = 1.0;
+                double Kp_y = 1.0;
+                double Kp_z = 1.0;
+
+                // Calculate control signals (desired velocities)
+                double vx = Kp_x * error_x;
+                double vy = Kp_y * error_y;
+                double vz = Kp_z * error_z;
+
+                // Create a PoseStamped message with desired velocities
+                geometry_msgs::msg::PoseStamped setpoint_msg;
+                setpoint_msg.header.stamp = this->get_clock()->now(); // Set the timestamp
+                setpoint_msg.header.frame_id = "base_link"; // Set the frame ID (adjust if needed)
+                setpoint_msg.pose.position.x = vx;
+                setpoint_msg.pose.position.y = vy;
+                setpoint_msg.pose.position.z = vz;
+
+                // Publish the new setpoint position
+                local_pos_pub_->publish(setpoint_msg);
+
+                geometry_msgs::msg::PoseStamped target_position_;
+                target_position_.pose.position.x=5;
+                target_position_.pose.position.y=5;
+                target_position_.pose.position.z=3;
+                publisher_->publish(target_position_);
+
+                // Sleep for a short interval to control the loop rate
+                std::this_thread::sleep_for(100ms);
+            }
+        }
+
+
+    void setNextTargetPosition() {
+        if (current_target_index < coordinates_.size()) {
+            const auto& target = coordinates_[current_target_index];
+            setTargetPosition(target[0], target[1], target[2]);
+            current_target_index++;
+        }
+    }
 
     void publish(const geometry_msgs::msg::PoseStamped setpoint_to_send)
     {
@@ -101,22 +282,24 @@ private:
     void state_cb(const mavros_msgs::msg::State::SharedPtr msg)
     {
         current_state_ = *msg;
-        RCLCPP_INFO(this->get_logger(), "Current State: %s", current_state_.mode.c_str());
+        //RCLCPP_INFO(this->get_logger(), "Current State: %s", current_state_.mode.c_str());
     }
 
 
     void local_pos_cb(const geometry_msgs::msg::PoseStamped::SharedPtr msg)
     {
-        geometry_msgs::msg::PoseStamped current_local_pos_ = *msg;
+        geometry_msgs::msg::PoseStamped currrent_local_pos_ = *msg;
 
         // To obtain the position of the drone use this data fields withing the message, please note, that this is the local position of the drone in the NED frame so it is different to the map frame
-        current_local_pos_.pose.position.x;
-        current_local_pos_.pose.position.y;
-        current_local_pos_.pose.position.z;
+        currrent_local_pos_.pose.position.x;
+        currrent_local_pos_.pose.position.y;
+        currrent_local_pos_.pose.position.z;
         // you can do the same for orientation, but you will not need it for this seminar
+        global_current_x = currrent_local_pos_.pose.position.x;
+        global_current_y = currrent_local_pos_.pose.position.y;
+        global_current_z = currrent_local_pos_.pose.position.z;
 
-
-        RCLCPP_INFO(this->get_logger(), "Current Local Position: %f, %f, %f", current_local_pos_.pose.position.x, current_local_pos_.pose.position.y, current_local_pos_.pose.position.z);
+        RCLCPP_INFO(this->get_logger(), "Currrrent Local Position: %f, %f, %f", currrent_local_pos_.pose.position.x, currrent_local_pos_.pose.position.y, currrent_local_pos_.pose.position.z);
     }
 
 
@@ -128,50 +311,44 @@ private:
 
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr local_pos_sub_;
 
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr publisher_;
+
     mavros_msgs::msg::State current_state_;
 };
 
-/*
-void nacitatMapu()
-{
-    FILE *pArq;
-    pArq = fopen("/home/lrs-ubuntu/LRS/ros2_ws_group10/src/template_drone_control/maps/FEI_LRS_2D.pgm", "r");
-
-    char line1[2], line2[100], line3[10];
-
-    int cont = 1;
-    while(1){
-        if(cont ==1){ //version
-            fscanf(pArq, "%s", &line1);
-            if(feof(pArq)) break;
-
-            printf("%s", line1);
-        }
-
-        if(cont ==2){ //comment
-            fscanf(pArq, "%s", &line2);
-            if(feof(pArq)) break;
-
-            printf("%s", line2);
-        }
-
-        if(cont ==3){ //width, height
-            fscanf(pArq, "%s", &line3);
-            if(feof(pArq)) break;
-
-            printf("%s", line3);
-        }
-
-        cont++;
+void readCoordinatesFromFile(std::vector<std::vector<float>>& coordinates) {
+    std::ifstream file("/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/suradnice.txt");
+    if (!file.is_open()) {
+        std::cerr << "Error opening file." << std::endl;
+        return;
     }
-    fclose(pArq);
+
+    std::string line;
+    while (std::getline(file, line)) {
+        std::istringstream iss(line);
+        float x, y, z;
+        if (!(iss >> x >> y >> z)) {
+            std::cerr << "Error reading coordinates from file." << std::endl;
+            break;
+        }
+        coordinates.push_back({x, y, z});
+    }
+    file.close();
 }
-*/
+
 int main(int argc, char **argv)
 {
-    //nacitatMapu();
+    std::vector<std::vector<float>> coordinates;
+    readCoordinatesFromFile(coordinates);
+
+    if (coordinates.empty()) {
+        std::cerr << "No coordinates found in file." << std::endl;
+        return -1;
+    }
+
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<TemplateDroneControl>());
+    auto node = std::make_shared<TemplateDroneControl>(coordinates);
+    rclcpp::spin(node);
     rclcpp::shutdown();
     return 0;
 }

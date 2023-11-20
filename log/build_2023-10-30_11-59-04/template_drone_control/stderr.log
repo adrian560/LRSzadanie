@@ -1,0 +1,21 @@
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:100:9: warning: multi-line comment [-Wcomment]
+  100 |         // TODO: Arm and Take Off\
+      |         ^
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In constructor ‘TemplateDroneControl::TemplateDroneControl(const std::vector<std::vector<float> >&)’:
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:205:17: warning: comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<std::vector<float> >::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  205 |         while(i < coordinates_.size())
+      |               ~~^~~~~~~~~~~~~~~~~~~~~
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::publish(geometry_msgs::msg::PoseStamped)’:
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:302:56: warning: unused parameter ‘setpoint_to_send’ [-Wunused-parameter]
+  302 |     void publish(const geometry_msgs::msg::PoseStamped setpoint_to_send)
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::local_pos_cb(geometry_msgs::msg::PoseStamped_<std::allocator<void> >::SharedPtr)’:
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:321:43: warning: statement has no effect [-Wunused-value]
+  321 |         currrent_local_pos_.pose.position.x;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:322:43: warning: statement has no effect [-Wunused-value]
+  322 |         currrent_local_pos_.pose.position.y;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:323:43: warning: statement has no effect [-Wunused-value]
+  323 |         currrent_local_pos_.pose.position.z;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^

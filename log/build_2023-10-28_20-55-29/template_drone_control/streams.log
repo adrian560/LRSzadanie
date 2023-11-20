@@ -1,0 +1,43 @@
+[0.070s] Invoking command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control -- -j8 -l8
+[0.197s] [35m[1mScanning dependencies of target template_drone_control_node[0m
+[0.303s] [ 50%] [32mBuilding CXX object CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o[0m
+[15.890s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:74:9: warning: multi-line comment [-Wcomment]
+[15.890s]    74 |         // TODO: Arm and Take Off\
+[15.891s]       |         ^
+[15.891s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:215:29: error: redeclaration of ‘mavros_msgs::msg::State TemplateDroneControl::arming_client_’
+[15.892s]   215 |     mavros_msgs::msg::State arming_client_;
+[15.892s]       |                             ^~~~~~~~~~~~~~
+[15.892s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:208:62: note: previous declaration ‘rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr TemplateDroneControl::arming_client_’
+[15.892s]   208 |     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr arming_client_;
+[15.892s]       |                                                              ^~~~~~~~~~~~~~
+[15.892s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In constructor ‘TemplateDroneControl::TemplateDroneControl()’:
+[15.893s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:90:14: error: conflicting declaration ‘auto result’
+[15.893s]    90 |         auto result = arming_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandBool::Request>(arm_request));
+[15.893s]       |              ^~~~~~
+[15.893s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:65:14: note: previous declaration as ‘std::shared_future<std::shared_ptr<mavros_msgs::srv::SetMode_Response_<std::allocator<void> > > > result’
+[15.893s]    65 |         auto result = set_mode_client_->async_send_request(std::make_shared<mavros_msgs::srv::SetMode::Request>(guided_set_mode_req));
+[15.893s]       |              ^~~~~~
+[15.893s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:107:14: error: conflicting declaration ‘auto result’
+[15.893s]   107 |         auto result = takeoff_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandTOL::Request>(takeoff_request));
+[15.893s]       |              ^~~~~~
+[15.893s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:65:14: note: previous declaration as ‘std::shared_future<std::shared_ptr<mavros_msgs::srv::SetMode_Response_<std::allocator<void> > > > result’
+[15.894s]    65 |         auto result = set_mode_client_->async_send_request(std::make_shared<mavros_msgs::srv::SetMode::Request>(guided_set_mode_req));
+[15.894s]       |              ^~~~~~
+[15.894s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::publish(geometry_msgs::msg::PoseStamped)’:
+[15.894s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:177:56: warning: unused parameter ‘setpoint_to_send’ [-Wunused-parameter]
+[15.894s]   177 |     void publish(const geometry_msgs::msg::PoseStamped setpoint_to_send)
+[15.894s]       |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+[15.894s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::local_pos_cb(geometry_msgs::msg::PoseStamped_<std::allocator<void> >::SharedPtr)’:
+[15.894s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:196:42: warning: statement has no effect [-Wunused-value]
+[15.894s]   196 |         current_local_pos_.pose.position.x;
+[15.899s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[15.909s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:197:42: warning: statement has no effect [-Wunused-value]
+[15.910s]   197 |         current_local_pos_.pose.position.y;
+[15.910s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[15.910s] /home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:198:42: warning: statement has no effect [-Wunused-value]
+[15.911s]   198 |         current_local_pos_.pose.position.z;
+[15.911s]       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+[15.914s] make[2]: *** [CMakeFiles/template_drone_control_node.dir/build.make:63: CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o] Error 1
+[15.915s] make[1]: *** [CMakeFiles/Makefile2:105: CMakeFiles/template_drone_control_node.dir/all] Error 2
+[15.915s] make: *** [Makefile:141: all] Error 2
+[15.917s] Invoked command in '/home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy /usr/bin/cmake --build /home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control -- -j8 -l8

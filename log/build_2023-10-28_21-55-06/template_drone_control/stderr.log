@@ -1,0 +1,17 @@
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:74:9: warning: multi-line comment [-Wcomment]
+   74 |         // TODO: Arm and Take Off\
+      |         ^
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::publish(geometry_msgs::msg::PoseStamped)’:
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:223:56: warning: unused parameter ‘setpoint_to_send’ [-Wunused-parameter]
+  223 |     void publish(const geometry_msgs::msg::PoseStamped setpoint_to_send)
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function ‘void TemplateDroneControl::local_pos_cb(geometry_msgs::msg::PoseStamped_<std::allocator<void> >::SharedPtr)’:
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:242:42: warning: statement has no effect [-Wunused-value]
+  242 |         current_local_pos_.pose.position.x;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:243:42: warning: statement has no effect [-Wunused-value]
+  243 |         current_local_pos_.pose.position.y;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:244:42: warning: statement has no effect [-Wunused-value]
+  244 |         current_local_pos_.pose.position.z;
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^

@@ -1,0 +1,210 @@
+[0.000000] (-) TimerEvent: {}
+[0.035298] (template_drone_control) JobQueued: {'identifier': 'template_drone_control', 'dependencies': OrderedDict()}
+[0.038294] (template_drone_control) JobStarted: {'identifier': 'template_drone_control'}
+[0.085223] (template_drone_control) JobProgress: {'identifier': 'template_drone_control', 'progress': 'cmake'}
+[0.094376] (template_drone_control) JobProgress: {'identifier': 'template_drone_control', 'progress': 'build'}
+[0.097045] (template_drone_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control', '--', '-j8', '-l8'], 'cwd': '/home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'lrs-ubuntu'), ('LC_TIME', 'sk_SK.UTF-8'), ('SSH_AGENT_PID', '1709'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/home/lrs-ubuntu'), ('OLDPWD', '/home/lrs-ubuntu/LRS'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/terminator.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'sk_SK.UTF-8'), ('MANAGERPID', '1531'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '3946'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/lrs-ubuntu/LRS/ros2_ws_group_10/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'lrs-ubuntu'), ('JOURNAL_STREAM', '8:45046'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'lrs-ubuntu'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', '/home/lrs-ubuntu/fei_lrs_gazebo/models:'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/usr/lib/ccache:/home/lrs-ubuntu/ardupilot/Tools/autotest:/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:/home/lrs-ubuntu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/lrs:@/tmp/.ICE-unix/1747,unix/lrs:/tmp/.ICE-unix/1747'), ('INVOCATION_ID', '25c670f4d5844cd19b931d152a4fdea3'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'sk_SK.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'sk_SK.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/lrs-ubuntu/LRS/ros2_ws_group_10/install/template_drone_control:/opt/ros/foxy'), ('SHELL', '/bin/bash'), ('LC_NAME', 'sk_SK.UTF-8'), ('TERMINATOR_UUID', 'urn:uuid:93345eb8-ec3c-40d3-a6ce-0b23e4d5ea39'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'sk_SK.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('LC_IDENTIFICATION', 'sk_SK.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/lrs-ubuntu/LRS/ros2_ws_group_10/build/template_drone_control'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('LC_NUMERIC', 'sk_SK.UTF-8'), ('LC_PAPER', 'sk_SK.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/lrs-ubuntu/LRS/ros2_ws_group_10/install/template_drone_control:/opt/ros/foxy')]), 'shell': False}
+[0.111806] (-) TimerEvent: {}
+[0.214750] (-) TimerEvent: {}
+[0.235474] (template_drone_control) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target template_drone_control_node\x1b[0m\n'}
+[0.315455] (-) TimerEvent: {}
+[0.342104] (template_drone_control) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o\x1b[0m\n'}
+[0.415595] (-) TimerEvent: {}
+[0.516207] (-) TimerEvent: {}
+[0.617059] (-) TimerEvent: {}
+[0.719091] (-) TimerEvent: {}
+[0.820805] (-) TimerEvent: {}
+[0.922256] (-) TimerEvent: {}
+[1.023501] (-) TimerEvent: {}
+[1.124719] (-) TimerEvent: {}
+[1.225460] (-) TimerEvent: {}
+[1.327005] (-) TimerEvent: {}
+[1.428874] (-) TimerEvent: {}
+[1.530084] (-) TimerEvent: {}
+[1.631989] (-) TimerEvent: {}
+[1.732973] (-) TimerEvent: {}
+[1.834078] (-) TimerEvent: {}
+[1.934934] (-) TimerEvent: {}
+[2.035580] (-) TimerEvent: {}
+[2.136925] (-) TimerEvent: {}
+[2.238054] (-) TimerEvent: {}
+[2.339338] (-) TimerEvent: {}
+[2.441466] (-) TimerEvent: {}
+[2.542765] (-) TimerEvent: {}
+[2.644450] (-) TimerEvent: {}
+[2.745065] (-) TimerEvent: {}
+[2.846171] (-) TimerEvent: {}
+[2.947285] (-) TimerEvent: {}
+[3.047910] (-) TimerEvent: {}
+[3.148646] (-) TimerEvent: {}
+[3.249812] (-) TimerEvent: {}
+[3.350725] (-) TimerEvent: {}
+[3.451205] (-) TimerEvent: {}
+[3.552153] (-) TimerEvent: {}
+[3.653944] (-) TimerEvent: {}
+[3.754608] (-) TimerEvent: {}
+[3.856912] (-) TimerEvent: {}
+[3.957934] (-) TimerEvent: {}
+[4.059491] (-) TimerEvent: {}
+[4.161495] (-) TimerEvent: {}
+[4.262855] (-) TimerEvent: {}
+[4.364946] (-) TimerEvent: {}
+[4.466193] (-) TimerEvent: {}
+[4.568102] (-) TimerEvent: {}
+[4.668952] (-) TimerEvent: {}
+[4.770757] (-) TimerEvent: {}
+[4.871300] (-) TimerEvent: {}
+[4.972374] (-) TimerEvent: {}
+[5.073281] (-) TimerEvent: {}
+[5.174327] (-) TimerEvent: {}
+[5.275328] (-) TimerEvent: {}
+[5.376674] (-) TimerEvent: {}
+[5.478281] (-) TimerEvent: {}
+[5.579052] (-) TimerEvent: {}
+[5.680220] (-) TimerEvent: {}
+[5.781390] (-) TimerEvent: {}
+[5.881871] (-) TimerEvent: {}
+[5.983031] (-) TimerEvent: {}
+[6.084061] (-) TimerEvent: {}
+[6.185839] (-) TimerEvent: {}
+[6.286596] (-) TimerEvent: {}
+[6.387018] (-) TimerEvent: {}
+[6.487588] (-) TimerEvent: {}
+[6.588307] (-) TimerEvent: {}
+[6.690676] (-) TimerEvent: {}
+[6.792607] (-) TimerEvent: {}
+[6.894822] (-) TimerEvent: {}
+[6.996954] (-) TimerEvent: {}
+[7.097924] (-) TimerEvent: {}
+[7.198936] (-) TimerEvent: {}
+[7.299382] (-) TimerEvent: {}
+[7.400891] (-) TimerEvent: {}
+[7.501912] (-) TimerEvent: {}
+[7.602873] (-) TimerEvent: {}
+[7.704448] (-) TimerEvent: {}
+[7.805136] (-) TimerEvent: {}
+[7.906875] (-) TimerEvent: {}
+[8.008081] (-) TimerEvent: {}
+[8.109125] (-) TimerEvent: {}
+[8.210234] (-) TimerEvent: {}
+[8.311249] (-) TimerEvent: {}
+[8.411941] (-) TimerEvent: {}
+[8.513371] (-) TimerEvent: {}
+[8.615402] (-) TimerEvent: {}
+[8.717720] (-) TimerEvent: {}
+[8.818759] (-) TimerEvent: {}
+[8.920835] (-) TimerEvent: {}
+[9.022262] (-) TimerEvent: {}
+[9.124064] (-) TimerEvent: {}
+[9.225568] (-) TimerEvent: {}
+[9.326618] (-) TimerEvent: {}
+[9.427802] (-) TimerEvent: {}
+[9.529951] (-) TimerEvent: {}
+[9.632138] (-) TimerEvent: {}
+[9.733164] (-) TimerEvent: {}
+[9.834283] (-) TimerEvent: {}
+[9.935176] (-) TimerEvent: {}
+[10.037147] (-) TimerEvent: {}
+[10.137673] (-) TimerEvent: {}
+[10.238490] (-) TimerEvent: {}
+[10.339484] (-) TimerEvent: {}
+[10.441759] (-) TimerEvent: {}
+[10.542935] (-) TimerEvent: {}
+[10.643836] (-) TimerEvent: {}
+[10.744845] (-) TimerEvent: {}
+[10.845667] (-) TimerEvent: {}
+[10.946957] (-) TimerEvent: {}
+[11.049344] (-) TimerEvent: {}
+[11.150670] (-) TimerEvent: {}
+[11.252785] (-) TimerEvent: {}
+[11.354216] (-) TimerEvent: {}
+[11.455224] (-) TimerEvent: {}
+[11.557639] (-) TimerEvent: {}
+[11.658882] (-) TimerEvent: {}
+[11.761288] (-) TimerEvent: {}
+[11.862080] (-) TimerEvent: {}
+[11.962726] (-) TimerEvent: {}
+[12.063689] (-) TimerEvent: {}
+[12.165851] (-) TimerEvent: {}
+[12.266785] (-) TimerEvent: {}
+[12.368084] (-) TimerEvent: {}
+[12.469112] (-) TimerEvent: {}
+[12.569954] (-) TimerEvent: {}
+[12.671984] (-) TimerEvent: {}
+[12.772944] (-) TimerEvent: {}
+[12.874040] (-) TimerEvent: {}
+[12.975205] (-) TimerEvent: {}
+[13.076640] (-) TimerEvent: {}
+[13.177643] (-) TimerEvent: {}
+[13.278388] (-) TimerEvent: {}
+[13.379215] (-) TimerEvent: {}
+[13.480085] (-) TimerEvent: {}
+[13.581420] (-) TimerEvent: {}
+[13.683562] (-) TimerEvent: {}
+[13.784296] (-) TimerEvent: {}
+[13.884824] (-) TimerEvent: {}
+[13.986112] (-) TimerEvent: {}
+[14.088376] (-) TimerEvent: {}
+[14.189313] (-) TimerEvent: {}
+[14.290066] (-) TimerEvent: {}
+[14.392262] (-) TimerEvent: {}
+[14.493196] (-) TimerEvent: {}
+[14.594316] (-) TimerEvent: {}
+[14.695652] (-) TimerEvent: {}
+[14.797010] (-) TimerEvent: {}
+[14.898348] (-) TimerEvent: {}
+[14.999362] (-) TimerEvent: {}
+[15.100339] (-) TimerEvent: {}
+[15.201503] (-) TimerEvent: {}
+[15.302391] (-) TimerEvent: {}
+[15.403801] (-) TimerEvent: {}
+[15.505747] (-) TimerEvent: {}
+[15.606211] (-) TimerEvent: {}
+[15.706876] (-) TimerEvent: {}
+[15.808610] (-) TimerEvent: {}
+[15.910343] (-) TimerEvent: {}
+[15.929376] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:74:9: warning: multi-line comment [-Wcomment]\n'}
+[15.929845] (template_drone_control) StderrLine: {'line': b'   74 |         // TODO: Arm and Take Off\\\n'}
+[15.930111] (template_drone_control) StderrLine: {'line': b'      |         ^\n'}
+[15.930441] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:215:29: error: redeclaration of \xe2\x80\x98mavros_msgs::msg::State TemplateDroneControl::arming_client_\xe2\x80\x99\n'}
+[15.930866] (template_drone_control) StderrLine: {'line': b'  215 |     mavros_msgs::msg::State arming_client_;\n'}
+[15.931280] (template_drone_control) StderrLine: {'line': b'      |                             ^~~~~~~~~~~~~~\n'}
+[15.931456] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:208:62: note: previous declaration \xe2\x80\x98rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr TemplateDroneControl::arming_client_\xe2\x80\x99\n'}
+[15.931586] (template_drone_control) StderrLine: {'line': b'  208 |     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr arming_client_;\n'}
+[15.931711] (template_drone_control) StderrLine: {'line': b'      |                                                              ^~~~~~~~~~~~~~\n'}
+[15.931902] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In constructor \xe2\x80\x98TemplateDroneControl::TemplateDroneControl()\xe2\x80\x99:\n'}
+[15.932006] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:90:14: error: conflicting declaration \xe2\x80\x98auto result\xe2\x80\x99\n'}
+[15.932136] (template_drone_control) StderrLine: {'line': b'   90 |         auto result = arming_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandBool::Request>(arm_request));\n'}
+[15.932223] (template_drone_control) StderrLine: {'line': b'      |              ^~~~~~\n'}
+[15.932317] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:65:14: note: previous declaration as \xe2\x80\x98std::shared_future<std::shared_ptr<mavros_msgs::srv::SetMode_Response_<std::allocator<void> > > > result\xe2\x80\x99\n'}
+[15.932424] (template_drone_control) StderrLine: {'line': b'   65 |         auto result = set_mode_client_->async_send_request(std::make_shared<mavros_msgs::srv::SetMode::Request>(guided_set_mode_req));\n'}
+[15.932549] (template_drone_control) StderrLine: {'line': b'      |              ^~~~~~\n'}
+[15.932683] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:107:14: error: conflicting declaration \xe2\x80\x98auto result\xe2\x80\x99\n'}
+[15.932768] (template_drone_control) StderrLine: {'line': b'  107 |         auto result = takeoff_client_->async_send_request(std::make_shared<mavros_msgs::srv::CommandTOL::Request>(takeoff_request));\n'}
+[15.932852] (template_drone_control) StderrLine: {'line': b'      |              ^~~~~~\n'}
+[15.932936] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:65:14: note: previous declaration as \xe2\x80\x98std::shared_future<std::shared_ptr<mavros_msgs::srv::SetMode_Response_<std::allocator<void> > > > result\xe2\x80\x99\n'}
+[15.933051] (template_drone_control) StderrLine: {'line': b'   65 |         auto result = set_mode_client_->async_send_request(std::make_shared<mavros_msgs::srv::SetMode::Request>(guided_set_mode_req));\n'}
+[15.933147] (template_drone_control) StderrLine: {'line': b'      |              ^~~~~~\n'}
+[15.933237] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function \xe2\x80\x98void TemplateDroneControl::publish(geometry_msgs::msg::PoseStamped)\xe2\x80\x99:\n'}
+[15.933326] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:177:56: warning: unused parameter \xe2\x80\x98setpoint_to_send\xe2\x80\x99 [-Wunused-parameter]\n'}
+[15.933425] (template_drone_control) StderrLine: {'line': b'  177 |     void publish(const geometry_msgs::msg::PoseStamped setpoint_to_send)\n'}
+[15.933553] (template_drone_control) StderrLine: {'line': b'      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~\n'}
+[15.933657] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp: In member function \xe2\x80\x98void TemplateDroneControl::local_pos_cb(geometry_msgs::msg::PoseStamped_<std::allocator<void> >::SharedPtr)\xe2\x80\x99:\n'}
+[15.933769] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:196:42: warning: statement has no effect [-Wunused-value]\n'}
+[15.933919] (template_drone_control) StderrLine: {'line': b'  196 |         current_local_pos_.pose.position.x;\n'}
+[15.934717] (template_drone_control) StderrLine: {'line': b'      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n'}
+[15.941048] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:197:42: warning: statement has no effect [-Wunused-value]\n'}
+[15.949090] (template_drone_control) StderrLine: {'line': b'  197 |         current_local_pos_.pose.position.y;\n'}
+[15.949448] (template_drone_control) StderrLine: {'line': b'      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n'}
+[15.949778] (template_drone_control) StderrLine: {'line': b'/home/lrs-ubuntu/LRS/ros2_ws_group_10/src/template_drone_control/src/template_drone_control_node.cpp:198:42: warning: statement has no effect [-Wunused-value]\n'}
+[15.950095] (template_drone_control) StderrLine: {'line': b'  198 |         current_local_pos_.pose.position.z;\n'}
+[15.950359] (template_drone_control) StderrLine: {'line': b'      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n'}
+[15.950693] (template_drone_control) StderrLine: {'line': b'make[2]: *** [CMakeFiles/template_drone_control_node.dir/build.make:63: CMakeFiles/template_drone_control_node.dir/src/template_drone_control_node.cpp.o] Error 1\n'}
+[15.953982] (template_drone_control) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:105: CMakeFiles/template_drone_control_node.dir/all] Error 2\n'}
+[15.954903] (template_drone_control) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[15.955180] (template_drone_control) CommandEnded: {'returncode': 2}
+[16.010720] (-) TimerEvent: {}
+[16.113870] (-) TimerEvent: {}
+[16.215233] (-) TimerEvent: {}
+[16.227436] (template_drone_control) JobEnded: {'identifier': 'template_drone_control', 'rc': 2}
+[16.229130] (-) EventReactorShutdown: {}
